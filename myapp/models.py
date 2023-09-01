@@ -113,7 +113,7 @@ class Attendance(models.Model):
 
 class AttendanceReport(models.Model):
     id = models.AutoField(primary_key=True)
-    subject_id  = models.ForeignKey(Subject , on_delete=models.DO_NOTHING)
+    student_id  = models.ForeignKey(Subject , on_delete=models.DO_NOTHING)
     attendance_id = models.ForeignKey(Attendance , on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
 
@@ -215,7 +215,7 @@ class StudentResult(models.Model):
     
 #Creating django signall
 
-
+@receiver(post_save , sender=CustomUser)
 #now creating a function which will automaticaly insert data in HOD Staff of Student
 def create_user_profile(sender , instance , created , **kwargs):
     # if created is true (means data is inserted)
@@ -231,7 +231,7 @@ def create_user_profile(sender , instance , created , **kwargs):
                                    address = "",
                                    profile_pic = "",
                                    gender="")
-    
+@receiver(post_save , sender=CustomUser)  
 def save_user_profile(sender , instance , **kwargs):
     if instance.user_type ==1:
         instance.adminhod.save()

@@ -30,8 +30,6 @@ def staff_home(request):
              
     print(final_course)
     students_count = Student.objects.filter(course_id__in=final_course).count()
-    subject_count = subject.count()
-    print(subject_count)
     print(students_count)
      
     # Fetch All Attendance Count
@@ -69,14 +67,13 @@ def staff_home(request):
         "students_count": students_count,
         "attendance_count": attendance_count,
         "leave_count": leave_count,
-        "subject_count": subject_count,
         "subject_list": subject_list,
         "attendance_list": attendance_list,
         "student_list": student_list,
         "attendance_present_list": student_list_attendance_present,
         "attendance_absent_list": student_list_attendance_absent
     }
-    return render(request, "staff_template/staff_home_template.html", context)
+    return render(request, "staff/staff_dashboard.html", context)
  
  
  

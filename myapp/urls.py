@@ -1,6 +1,5 @@
 from django.urls import path  
 from .import views 
-from .import HodViews , StaffViews , StudentViews
 
 urlpatterns = [
     path('' ,views.home, name='home'),

@@ -1,6 +1,5 @@
 from django.shortcuts import render,HttpResponse, redirect,HttpResponseRedirect
 from django.contrib.auth import logout, authenticate, login
-from .models import CustomUser, Staff, Student, AdminHOD
 from django.contrib import messages
  
 def home(request):

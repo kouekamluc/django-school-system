@@ -1,17 +1,34 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser , AdminHOD , Staff , Course ,Student ,Subject , Attendance ,AttendanceReport , LeaveReportStaff ,LeaveReportStudent ,FeedBackStaff,FeedBackStudent , NotificationStaff ,NotificationStudent
-
+from .models import CustomUser , AdminHOD , Staff , Course ,Student ,Subject , Attendance ,AttendanceReport , LeaveReportStaff ,LeaveReportStudent ,FeedBackStaff,FeedBackStudent , NotificationStaff ,NotificationStudent ,SessionYearModel
+from .forms import CustomUserChangeForm , CustomUserCreationForm
 # Register your models here.
 
 
+
 class UserModel(UserAdmin):
-    pass  
+    add_form  = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser 
+    list_display = ('username','email' , 'user_type' , 'is_staff' , 'is_active')
+    fieldsets = (
+        *UserAdmin.fieldsets ,
+        ('Other Personal info',
+         {
+            "fields": (
+                'user_type', 
+            ),
+        }),
+    )
+    
+    
+  
+    
 
 
-admin.site.register(CustomUser , UserAdmin)
+admin.site.register(CustomUser , UserModel)
 
-
+admin.site.register(SessionYearModel)
 admin.site.register(AdminHOD)
 admin.site.register(Staff)
 admin.site.register(Course)

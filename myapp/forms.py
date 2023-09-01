@@ -1,5 +1,7 @@
 from django import forms
-from .models import Course , SessionYearModel
+from django.contrib.auth.forms import UserCreationForm , UserChangeForm
+from .models import Course , SessionYearModel , CustomUser
+
 
 
 
@@ -7,6 +9,23 @@ class DateInput(forms.DateInput):
     input_type = "date"
     
 
+
+
+
+class CustomUserCreationForm(UserCreationForm):
+
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+        
+        
 class AddStudentForm(forms.Form):
     email = forms.EmailField(max_length=50 )
     password = forms.CharField(  max_length=55)
