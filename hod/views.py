@@ -6,9 +6,9 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 import json
  
-from .forms import AddStudentForm, EditStudentForm
+from myapp.forms import AddStudentForm, EditStudentForm
  
-from .models import CustomUser, Staff, Course, Subject, Student, SessionYearModel, FeedBackStudent, FeedBackStaff, LeaveReportStudent, LeaveReportStaff, Attendance, AttendanceReport
+from myapp.models import CustomUser, Staff, Course, Subject, Student, SessionYearModel, FeedBackStudent, FeedBackStaff, LeaveReportStudent, LeaveReportStaff, Attendance, AttendanceReport
  
  
 def admin_home(request):
